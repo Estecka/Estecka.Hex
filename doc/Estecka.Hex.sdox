@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SDConfig>
+  <section guid="feacbce2-8290-4d90-bb05-373b9d7dbbfc">
+    <item key="ConfigFileName" value="Estecka.Hex" />
+    <item key="ProjectName" value="Estecka.Hex" />
+    <item key="ProjectUrl" value="https://github.com/Estecka/Estecka.Hex" />
+    <item key="Author" value="Estecka" />
+    <item key="AuthorUrl" value="http://estecka.cf" />
+    <item key="VersionNumber" value="1.0.0" />
+    <InputFile>
+      <Relative>..\doc\default.sdnav</Relative>
+      <Full>..\doc\default.sdnav</Full>
+    </InputFile>
+    <OutputPath>
+      <Relative>..\doc</Relative>
+      <Full>..\doc</Full>
+    </OutputPath>
+    <item key="DocLanguage" value="en" />
+    <item key="ExcludePrivate" value="True" />
+    <item key="ExcludeProtected" value="True" />
+    <item key="ExcludeInternal" value="True" />
+    <item key="ExcludedIdentifiers" value="field.Estecka.Hex.HexTransform._cachedLocalHexPos;field.Estecka.Hex.HexTransform._cachedLocalQuadPos;Estecka.Hex.HexTransform.OnDrawGizmosSelected;Estecka.Hex.HexTransform.ParentTransformVector(UnityEngine.Vector3);field.Estecka.Hex.VectorRGB.HASHFACTOR;field.Estecka.Hex.HexEditor.VectorRGBDrawer.values" />
+    <item key="ActivatedExporters" value="Chm;Html" />
+  </section>
+  <section guid="36db802f-af3f-456d-910f-e2f9255e8150">
+    <CompilerPath>
+      <Relative>c:\program files (x86)\html help workshop</Relative>
+      <Full>C:\Program Files (x86)\HTML Help Workshop</Full>
+    </CompilerPath>
+    <item key="BackgroundColor" value="#FFFFFF" />
+    <item key="TextColor" value="#636363" />
+    <item key="LinkColor" value="#1382CE" />
+    <item key="LinkHoverColor" value="#F58026" />
+    <item key="TableHeaderBackgroundColor" value="#F6F5F1" />
+    <item key="TableHeaderBorderColor" value="#C2C2C2" />
+    <item key="BreadCrumbBackgroundColor" value="#EEEEEE" />
+    <item key="BreadCrumbBorderColor" value="#B4A9AC" />
+    <item key="BreadCrumbLinkColor" value="#8C7F83" />
+    <item key="BreadCrumbLinkHoverColor" value="#574C4F" />
+    <item key="SyntaxBoxBackgroundColor" value="#EEEEEE" />
+    <item key="SyntaxBoxBorderColor" value="#CCCCCC" />
+    <item key="SyntaxBoxTextColor" value="#636363" />
+  </section>
+  <section guid="9e8e8bc4-bfdd-11e3-a297-170828518c08">
+    <item key="Theme" value="sharpDox" />
+    <item key="ShowCode" value="False" />
+    <item key="PrimaryColor" value="#F5F4F0" />
+    <item key="SecondaryColor" value="#F58026" />
+    <item key="DisableSequenceDiagrams" value="True" />
+    <item key="FooterLine" value="Why hello, I am a footer" />
+  </section>
+</SDConfig>

@@ -1,0 +1,50 @@
+Hexagonal coordinates define a point in a 2D space using 3 non-orthogonal axes.\
+An Hexagonal vector is represented with the struct `VectorRGB`, which axes are named named as follow:
+
+- **Red**, which is matched with the X axis
+- **Green**, which goes Up and to the Left
+- **Blue**, which goes Down and to the left
+
+
+
+## The peculiarity of Hexagonal systems
+
+With `Vector2` and `Vector3`, you might be used to one position being produced by only one vector, but this is not true here. Because it uses more axes than dimensions, **multiple different vectors can lead to the same position.**\
+The most noteworthy phenomenons would be :
+ - **One translation on any one axis is worth one opposed translation on both other axes.**\
+	Thus Green+Blue `(0,1,1)` is worth negative Red `(-1,0,0)` aka Cyan.
+ - **All three axes combined will cancel each other out.**\
+	Thus `(0,0,0)`, `(1,1,1)`, `(2,2,2)` etc... all bring you back to the origin.
+
+However, the Equal operator still only returns `true` for two vectors of which components are strictly equal, even if they would lead to the same position. **If you need to check whether two vectors produce the same position, you need to balance them out before comparing them,** using either instance member `VectorRGB.balanced` or `VectorRGB.Balance()`.
+
+```csharp
+VectorRGB zero = new VectorRGB(0,0,0);
+VectorRGB one  = new VectorRGB(1,1,1);
+Debug.Log(zero == one); // false
+Debug.Log(zero == one.balanced); // true
+```
+
+Out of all the vectors that lead to the same position _only one of them_ is considered to be "balanced".\
+A balanced VectorRGB is defined as :
+<br/>- having one or more component equal to Zero
+<br/>- having no negative component
+
+Balancing a vector simply consists in subtracting the smallest component from all three components, so this operation should be cheap on the cpu.
+
+
+
+
+## Converting vectors
+`Vector2`/`vector3` and `VectorRGB` can be converted using an explicit cast.\
+The resulting VectorRGB is automatically balanced.\
+The resulting Vector3 has a Z of Zero. Alternatively, you can use `VectorRGB.ToVector3(float z)` to set the depth of the resulting Vector3.
+
+Do consider that because of the limited float precision, vectors may loose precision everytime they are converted.
+```csharp
+VectorRGB value = new VectorRGB(1,1,0);
+value = (VectorRGB)(Vector2)value;
+Debug.Log(value); // (1, 0.999, 0)
+```
+
+(Note : _Red_ and _X_ being matched perfectly, these aren't actually converted and thus should actually loose precision.)

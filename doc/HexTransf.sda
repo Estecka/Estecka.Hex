@@ -1,0 +1,38 @@
+The `HexTransform` component is the interface through which you can manipulate an object's Hex Position.
+
+The Hex-Transform does not take full control of the native Transform components : it is still possible to directly edit the Transform's position, and those changes will be properly reflected through the HexTransform.
+
+
+
+## Cached position vs Raw position
+
+What would be the `localPosition` property of the HexTransform actually comes in two flavors : `localPositionRaw` and `localPositionCached`.\
+Why this difference ?
+<br/>1. Vectors may loose precision when converted to and fro XY and RGB.
+<br/>2. Multiple VectorRGB can lead to the same position.
+
+
+There is no difference when setting these properties, the difference shows when getting them :
+<br/>'Raw' will convert the native Transform's XY position into RGB, which may lead to loss of precision.
+<br/>'Cached' will favor returning the same value you originally provided.
+
+```csharp
+HexTransform hex = this.GetComponent<HexTransform>();
+
+hex.localPositionRaw = new VectorRGB(1,1,0);
+
+Debug.Log(hex.localPositionCached); // (1,1,0)
+Debug.Log(hex.localPositionRaw); // (1, 0.999, 0)
+
+```
+Setting `raw` also caches the value you give, so it can be retrieved with `localPositionCached`.\
+You need not worry about the cached position becoming obsolete : if the Transform's position is changed anyhow else, the HexTransform will detect it, and `cached` will return the same result as `raw`.
+
+'Raw' is guaranteed to return a balanced VectorRGB; 'Cached' however, is not.
+
+
+
+## Z Axis
+
+Manipulating the 2D position through the HexTransform makes sure to preserve the existing Z coordinate in the transform.\
+The Z coordinate can also be modified alone via `HexTransform.depth` or `HexTransform.localDepth`.
